@@ -18,6 +18,6 @@ int main()
     int num;
     cin>>num;
     Solution s;
-    cout<<s.findComplement(num);
+    cout<<s.findComplement(num)<<endl;
     return 0;
 }
