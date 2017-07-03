@@ -32,5 +32,31 @@ public:
 
 int main()
 {
-    
-}
+    int n;
+    ListNode *head =new ListNode(0);
+    cin>>n;
+    if(!n)
+    {
+        head=NULL;
+    }
+    ListNode *q=head;
+    while(n--)
+    {
+        int k;
+        cin>>k;
+        ListNode *p= new ListNode(k);
+        q->next=p;
+        q=p;
+    }
+    head=head->next;
+    Solution2 s;
+    head=s.deleteDuplicates(head);
+
+    while(head!=NULL)
+    {
+        cout<<head->val<<" ";
+        head=head->next;
+    }
+    cout<<endl;
+    return 0;
+} 
