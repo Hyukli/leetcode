@@ -63,7 +63,7 @@ public:
             while(a[i]>0)
             {
                 ans+=(i+'0');
-                a[i]--;
+                a[i]--; 
             }
         }
         return ans;
