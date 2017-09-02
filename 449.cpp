@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include<iostream>
 #include<sstream>
 #include<stdio.h>
@@ -77,10 +78,30 @@ public:
         p->left=dfs(ss);
         p->right=dfs(ss);
         return p;
+=======
+class Codec {
+public:
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        if(!root) return " #";
+        string ans = " "+to_string(root->val);
+        return ans + serialize(root->left) + serialize(root->right); 
+    }
+
+    TreeNode* DFS(istringstream &is)
+    {
+        string str;
+        is >> str;
+        if(str == "#") return NULL;
+        TreeNode* root = new TreeNode(stoi(str));
+        root->left = DFS(is), root->right = DFS(is);
+        return root;
+>>>>>>> 9f0de42ecf6e616f2cae993211750b62e19cf3e9
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
+<<<<<<< HEAD
         stringstream ss(data);
         return dfs(ss);
     }
@@ -112,3 +133,9 @@ int main()
     cout<<s<<endl;
     return 0;
 }
+=======
+        istringstream is(data);
+        return DFS(is);
+    }
+};
+>>>>>>> 9f0de42ecf6e616f2cae993211750b62e19cf3e9
