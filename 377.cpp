@@ -68,7 +68,7 @@ int main()
     {
         cin>>v[i];
     }
-    Solution2 s;
+    Solution s;
     cout<<s.combinationSum4(v,t)<<endl;
     return 0;
 }
