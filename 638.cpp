@@ -5,58 +5,64 @@ using namespace std;
 
 class Solution {
 public:
-    int shoppingOffers(vector<int>& price, vector<vector<int> >& special, vector<int>& needs) {
+    int shoppingOffers(vector<int>& price, vector<vector<int>>& special, vector<int>& needs) {
         map<int,int> m;
-        return fun(price,special,m,get_key(needs));
+        return fun(price,special,toint(needs),m);
     }
 private:
-    int fun(vector<int> &price,vector<vector<int> >& special,map<int,int> &m,int k)
+    int toint(vector<int> v)
     {
-        if(m.count(k))
+        int ans=0;
+        for(int i=0;i<v.size();i++)
         {
-            return m[k];
+            ans*=10;
+            ans+=v[i];
         }
-        int n=price.size(),ans=0;
-        vector<int> pows(n,1);
-        for(int i=n-2;i>=0;i--)
+        return ans;
+    }
+    
+    int fun(vector<int>& price, vector<vector<int>>& special, int key,map<int,int>& m)
+    {
+        if(m.count(key))
         {
-            pows[i]=pows[i+1]*10;
+            return m[key];
         }
-        for(int i=0;i<n;i++)
+        int n=price.size();
+        int ans=0;
+        vector<int> v(n);
+        for(int i=n-1;i>=0;i--)
         {
-            ans+=((k/pows[i])%10)*price[i];
+            v[i]=key%10;
+            ans+=v[i]*price[i];
+            //cout<<ans<<" "<<v[i]<<" "<<price[i]<<endl;
+            key/=10;
         }
-        for(int j=0;j<special.size();j++)
+        //cout<<ans<<endl;
+        for(int i=0;i<special.size();i++)
         {
-            vector<int> spe=special[j];
-            int key=0,i=0;
-            while(i<n)
+            int k=0;
+            vector<int> t=special[i];
+            int j=0;
+            while(j<n)
             {
-                int t=(k/pows[i])%10;
-                if(t>=spe[i]){
-                    key = key*10+(t-spe[i++]);
+                if(t[j]<=v[j])
+                {
+                    k*=10;
+                    k+=(v[j]-t[j++]);
                 }
                 else
                 {
                     break;
                 }
             }
-            if(i==n)
+            if(j==n)
             {
-                ans=min(ans,spe[n]+fun(price,special,m,key));
+                ans=min(ans,t[n]+fun(price,special,k,m));
             }
         }
-        m[k]=ans;
+        m[key]=ans;
+
         return ans;
-    }
-    int get_key(vector<int>& needs)
-    {
-        int n=needs.size(),key=0;
-        for(int i=n-1,p=1;i>=0;i--,p*=10)
-        {
-            key+=needs[i]*p;
-        }
-        return key;
     }
 };
 
