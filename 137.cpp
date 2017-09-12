@@ -1,23 +1,24 @@
 #include<iostream>
+#include<algorithm>
 #include<vector>
 using namespace std;
 
 class Solution {
 public:
-    int singleNumber(vector<int>& nums) {
-        int one=0,two=0;
+    int singleNumber(vector<int>& nums)
+    {
+        int first=0,second=0;
         for(int i=0;i<nums.size();i++)
-        {13
-            one=(one^nums[i])&~two;
-            two=(two^nums[i])&~one;
+        {
+            first=(nums[i]^first)&~second;
+            second=(nums[i]^second)&~first;
         }
-        return one;
+        return first;
     }
 };
 
 int main()
 {
-    Solution s;
     int n;
     cin>>n;
     vector<int> v(n);
@@ -25,6 +26,7 @@ int main()
     {
         cin>>v[i];
     }
+    Solution s;
     cout<<s.singleNumber(v)<<endl;
     return 0;
 }
