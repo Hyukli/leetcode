@@ -26,4 +26,4 @@ int main()
     Solution s;
     cout<<s.majorityElement(v)<<endl;
     return 0;
-}
+} 
