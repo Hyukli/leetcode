@@ -21,6 +21,31 @@ public:
     }
 };
 
+class Solution2 {
+public:
+    int uniquePaths(int m, int n) {
+        if(m>n)
+        {
+            return c(m+n-2,n-1);
+        }
+        return c(m+n-2,m-1);
+    }
+private:
+    long long c(int k,int n)
+    {
+        long long res=1;
+        for(int i=0;i<n;i++)
+        {
+            res*=k--;
+        }
+        for(int i=2;i<=n;i++)
+        {
+            res/=i;
+        }
+        return res;
+    }
+};
+
 int main()
 {
     Solution s;
