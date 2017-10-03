@@ -52,4 +52,4 @@ int main()
     Solution s;
     cout<<s.singleNumber(v)<<endl;
     return 0;
-}
+} 
