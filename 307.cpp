@@ -1,16 +1,21 @@
+#include<iostream>
+#include<string.h>
+#include<vector>
+using namespace std;
+
 class NumArray {
 public:
     NumArray(vector<int> nums) {
         memset(bit,0,sizeof(bit));
         num=nums;
         n=nums.size();
-        for(long long i=0;i<n;i++)
+        for(int i=0;i<n;i++)
         {
             init(i,num[i]);
         }
     }
-    
-    void init(long long i,long long val)
+
+    void init(int i,int val)
     {
         i++;
         while(i<=n)
@@ -19,16 +24,16 @@ public:
             i+=(i&-i);
         }
     }
-    
-    void update(long long i, long long val) {
-        long long diff=val-num[i];
+
+    void update(int i, int val) {
+        int diff=val-num[i];
         num[i]=val;
         init(i,diff);
     }
-    
-    long long getsum(long long i)
+
+    int getsum(int i)
     {
-        long long sum=0;
+        int sum=0;
         i++;
         while(i>0)
         {
@@ -37,15 +42,38 @@ public:
         }
         return sum;
     }
-    
-    int sumRange(long long i, long long j) {
+
+    int sumRange(int i, int j) {
         return getsum(j)-getsum(i-1);
     }
 private:
     vector<int> num;
-    long long bit[200000];
+    int bit[200000];
     int n;
 };
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>v[i];
+    }
+    NumArray obj = NumArray(v);
+    int i,j;
+    cout<<"please input the left and right of the interval:"<<endl;
+    cin>>i>>j;
+    cout<<obj.sumRange(i,j)<<endl;;
+    cout<<"please input the position and val you wanna change:"<<endl;
+    cin>>i>>j;
+    obj.update(i,j);
+    cout<<"please input the left and right of the interval:"<<endl;
+    cin>>i>>j;
+    cout<<obj.sumRange(i,j)<<endl;
+    return 0;
+}
 
 /**
  * Your NumArray object will be instantiated and called as such:
