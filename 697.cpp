@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-class Solution {
+class Solution { 
 public:
     int findShortestSubArray(vector<int>& nums) {
         map<int,vector<int>> m;
