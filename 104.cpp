@@ -1,6 +1,6 @@
 #include<iostream>
 #include<sstream>
-#include<string>
+#include<string> 
 using namespace std;
 
 int a[1005];
