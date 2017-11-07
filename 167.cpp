@@ -37,4 +37,4 @@ int main()
     ans=s.twoSum(v,target);
     cout<<ans[0]<<" "<<ans[1]<<endl;
     return 0;
-}
+} 
