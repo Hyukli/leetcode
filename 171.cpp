@@ -23,3 +23,4 @@ int main()
     cout<<ss.titleToNumber(s)<<endl;
     return 0;
 }
+ 
