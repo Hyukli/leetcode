@@ -19,9 +19,55 @@ public:
     }
 };
 
+class Solution2 {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+
+        vector<int> ans;
+        ans.push_back(-1);
+        ans.push_back(-1);
+        if(nums.size()==0)
+        {
+            return ans;
+        }
+        int start=0;
+        int end=nums.size()-1;
+        int mid=(start+end)/2;
+        //cout<<"!!"<<endl;
+        while(start<=end)
+        {
+            mid=(start+end)/2;
+            if(nums[mid]==target)
+            {
+                break;
+            }
+            else if(nums[mid]<target)
+            {
+                start=mid+1;
+            }
+            else
+            {
+                end=mid-1;
+            }
+        }
+        //cout<<"!!"<<endl;
+        if(mid<0||mid>nums.size()-1||nums[mid]!=target)
+        {
+            return ans;
+        }
+        int i=mid,j=mid;
+        while(i>=0&&nums[i]==target)    i--;
+        while(j<nums.size()&&nums[j]==target)   j++;
+        ans[0]=i+1;
+        ans[1]=j-1;
+        return ans;
+    }
+};
+
 int main()
 {
-    Solution s;
+    //Solution s;
+    Solution2 s;
     int n,t;
     cin>>n>>t;
     vector<int> v(n);
