@@ -37,7 +37,7 @@ int load(int i,TreeNode *r)
     {
         if(a[2*i+1]==0)
         {
-
+ 
         }
         else
         {
