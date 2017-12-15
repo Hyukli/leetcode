@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string.h>
 using namespace std;
-
+ 
 class Solution {
 public:
     bool isAnagram(string s, string t) {
