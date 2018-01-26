@@ -6,9 +6,9 @@ public:
     int getSum(int a, int b) {
         while(b)
         {
-            int carry=a&b;//½øÎ»Î»ÖÃ
-            a=a^b;//Òà»ò½á¹û£¬È±1+1µÄ½øÎ»
-            b=carry<<1;//²úÉú½øÎ»µÄ×óÒÆ¶¯
+            int carry=a&b;//è¿›ä½ä½ç½®
+            a=a^b;//äº¦æˆ–ç»“æœï¼Œç¼º1+1çš„è¿›ä½
+            b=carry<<1;//äº§ç”Ÿè¿›ä½çš„å·¦ç§»åŠ¨
         }
         return a;
     }
@@ -21,4 +21,4 @@ int main()
     Solution s;
     cout<<s.getSum(a,b)<<endl;;
     return 0;
-}
+} 
