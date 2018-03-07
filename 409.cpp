@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string.h>
-using namespace std;
+using namespace std; 
 
 class Solution {
 public:
