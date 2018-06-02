@@ -1,6 +1,7 @@
 #include<iostream>
 #include<sstream>
 #include<string>
+#include<stack>
 #include<vector>
 
 using namespace std;
@@ -72,6 +73,31 @@ private:
     }
 };
 
+class Solution2 {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        TreeNode* p=root;
+        stack<TreeNode*> s;
+        while(!s.empty()||p)
+        {
+            if(p)
+            {
+                ans.push_back(p->val);
+                s.push(p);
+                p=p->left;
+            }
+            else
+            {
+                TreeNode* n=s.top();
+                s.pop();
+                p=n->right;
+            }
+        }
+        return ans;
+    }
+};
+
 int main()
 {
     cout<<"please input the number of node:"<<endl;
@@ -92,7 +118,7 @@ int main()
         Root->val=a[0];
         load(0,Root);
     }
-    Solution kk;
+    Solution2 kk;
     vector<int> V;
     V=kk.preorderTraversal(Root);
     for(int i=0;i<V.size();i++)
